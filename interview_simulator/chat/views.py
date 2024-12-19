@@ -13,11 +13,7 @@ from langchain_groq import ChatGroq
 
 # Initialize the Groq client
 client = Groq(api_key=settings.GROQ_API_KEY)
-# client = ChatGroq(
-#     temperature=0.7,
-#     groq_api_key=settings.GROQ_API_KEY,
-#     model_name="llama-3.1-70b-versatile"
-# )
+
 @login_required
 def chatbot(request):
     return render(request, 'chat.html')
@@ -38,22 +34,6 @@ def get_response(request):
             # Handle initialization: job role and company name
             job_role = data.get('job_role')
             company_name = data.get('company_name', 'the company')
-
-            # system_prompt = f"""
-            #     You are simulating an interview for the position of {job_role} at {company_name}.
-            #     - Start by greeting the candidate.
-            #     - Ask one question at a time relevant to the {job_role} position.
-            #     - Wait for the candidate's response before proceeding.
-            #     - After each response, provide detailed (but not too long) and constructive feedback in the following format:
-            #         1. **What was good about the answer**: Write a short paragraph highlighting the strengths.
-                    
-            #         2. **Areas for improvement**: Write a short paragraph pointing out the weaknesses or gaps in the answer.
-
-            #         3. **Tips to enhance the answer**: Write a short paragraph offering practical and actionable tips.
-
-            #     - Leave one empty line between each paragraph to ensure clarity and readability.
-            #     - Proceed to the next question after providing the feedback in the specified format.
-            #     """
             system_prompt = f"""
                 You are simulating an interview for the position of {job_role} at {company_name}.
                 - Start by greeting the candidate.
@@ -75,6 +55,7 @@ def get_response(request):
 
                 - Use proper formatting, with **bold headings** as shown, and strictly ensure that each paragraph is separated by a blank line for readability.
                 - Do not combine feedback into a single paragraph. Each section must appear as a standalone paragraph with spacing.
+                - then ask the next question.
                 """
 
 

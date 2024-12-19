@@ -1,0 +1,210 @@
+/* Root Variables for Consistent Theming */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --accent-color: #ff4081;
+    --background-color: #f4f4f8;
+    --text-color: #333;
+    --assistant-bubble: #e9e9eb;
+    --user-bubble: #dcf8c6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #f1f1f1;
+}
+
+/* Custom Scrollbar */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+*::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+*::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: var(--background-color);
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.navbar .logo:hover {
+    transform: scale(1.05);
+}
+
+.navbar .home-btn {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar .home-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--secondary-color);
+}
+
+/* Container Styles */
+#initial-input, #chat-window {
+    width: 90%;
+    max-width: 800px;
+    margin: 100px auto 50px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Input Styles */
+#job_role, #company_name {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#job_role:focus, #company_name:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+}
+
+#start-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+#start-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Chat Messages */
+#messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    max-height: 500px;
+    background-color: #f9f9f9;
+    border-radius: 12px 12px 0 0;
+}
+
+.user-message, .assistant-message {
+    max-width: 80%;
+    margin: 10px 0;
+    padding: 12px 15px;
+    border-radius: 12px;
+    clear: both;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: var(--user-bubble);
+    align-self: flex-end;
+    float: right;
+}
+
+.assistant-message {
+    background-color: var(--assistant-bubble);
+    align-self: flex-start;
+    float: left;
+}
+
+/* Input Box and Send Button */
+#user-input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    font-size: 16px;
+    color: var(--text-color);
+    background-color: #f4f4f8;
+    resize: none;
+    min-height: 50px;
+}
+
+#send-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#send-button:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+#send-button i {
+    font-size: 20px;
+}
